@@ -1,0 +1,315 @@
+:root {
+  --font-size: 58.6666666667px;
+  --content: "Aaron Clauss - Web Developer -";
+  --characters: 30;
+  --radius: 169px;
+  --glow-color: #09ff00;
+  --width: calc((2 * 3.141592 * var(--radius)) / 36 + 0.005em);
+  --spin-spin-time: 15s;
+}
+
+body {
+  background: #0d0d0d;
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.ring {
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 500px;
+          perspective: 500px;
+  -webkit-animation: perspective calc(var(--spin-spin-time, 32s) * 0.95) infinite linear alternate;
+          animation: perspective calc(var(--spin-spin-time, 32s) * 0.95) infinite linear alternate;
+}
+
+@-webkit-keyframes perspective {
+  0% {
+    -webkit-perspective-origin: 50% calc(50% + var(--radius) * 0.7);
+            perspective-origin: 50% calc(50% + var(--radius) * 0.7);
+    -webkit-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+  }
+  100% {
+    -webkit-perspective-origin: 48% calc(50% - var(--radius) * 0.7);
+            perspective-origin: 48% calc(50% - var(--radius) * 0.7);
+    -webkit-transform: rotate(15deg);
+            transform: rotate(15deg);
+  }
+}
+
+@keyframes perspective {
+  0% {
+    -webkit-perspective-origin: 50% calc(50% + var(--radius) * 0.7);
+            perspective-origin: 50% calc(50% + var(--radius) * 0.7);
+    -webkit-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+  }
+  100% {
+    -webkit-perspective-origin: 48% calc(50% - var(--radius) * 0.7);
+            perspective-origin: 48% calc(50% - var(--radius) * 0.7);
+    -webkit-transform: rotate(15deg);
+            transform: rotate(15deg);
+  }
+}
+
+.box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 0 0 5px #fff, 0 0 4px #fff, 0 0 8px var(--glow-color);
+  -webkit-animation: rotate var(--spin-spin-time) infinite linear;
+          animation: rotate var(--spin-spin-time) infinite linear;
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: rotateY(-360deg);
+            transform: rotateY(-360deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: rotateY(-360deg);
+            transform: rotateY(-360deg);
+  }
+}
+
+.panel {
+  position: absolute;
+  width: var(--width, 100px);
+  height: calc(var(--font-size) * 1.1);
+  line-height: 1;
+  overflow: hidden;
+  -webkit-transform: translate(-50%, -50%) rotateY(var(--angle)) translateZ(var(--radius));
+          transform: translate(-50%, -50%) rotateY(var(--angle)) translateZ(var(--radius));
+}
+
+.panel:nth-child(1) {
+  --left: calc(var(--width) * 0);
+  --angle: calc(360 / 36 * 0deg);
+}
+
+.panel:nth-child(2) {
+  --left: calc(var(--width) * -1);
+  --angle: calc(360 / 36 * 1deg);
+}
+
+.panel:nth-child(3) {
+  --left: calc(var(--width) * -2);
+  --angle: calc(360 / 36 * 2deg);
+}
+
+.panel:nth-child(4) {
+  --left: calc(var(--width) * -3);
+  --angle: calc(360 / 36 * 3deg);
+}
+
+.panel:nth-child(5) {
+  --left: calc(var(--width) * -4);
+  --angle: calc(360 / 36 * 4deg);
+}
+
+.panel:nth-child(6) {
+  --left: calc(var(--width) * -5);
+  --angle: calc(360 / 36 * 5deg);
+}
+
+.panel:nth-child(7) {
+  --left: calc(var(--width) * -6);
+  --angle: calc(360 / 36 * 6deg);
+}
+
+.panel:nth-child(8) {
+  --left: calc(var(--width) * -7);
+  --angle: calc(360 / 36 * 7deg);
+}
+
+.panel:nth-child(9) {
+  --left: calc(var(--width) * -8);
+  --angle: calc(360 / 36 * 8deg);
+}
+
+.panel:nth-child(10) {
+  --left: calc(var(--width) * -9);
+  --angle: calc(360 / 36 * 9deg);
+}
+
+.panel:nth-child(11) {
+  --left: calc(var(--width) * -10);
+  --angle: calc(360 / 36 * 10deg);
+}
+
+.panel:nth-child(12) {
+  --left: calc(var(--width) * -11);
+  --angle: calc(360 / 36 * 11deg);
+}
+
+.panel:nth-child(13) {
+  --left: calc(var(--width) * -12);
+  --angle: calc(360 / 36 * 12deg);
+}
+
+.panel:nth-child(14) {
+  --left: calc(var(--width) * -13);
+  --angle: calc(360 / 36 * 13deg);
+}
+
+.panel:nth-child(15) {
+  --left: calc(var(--width) * -14);
+  --angle: calc(360 / 36 * 14deg);
+}
+
+.panel:nth-child(16) {
+  --left: calc(var(--width) * -15);
+  --angle: calc(360 / 36 * 15deg);
+}
+
+.panel:nth-child(17) {
+  --left: calc(var(--width) * -16);
+  --angle: calc(360 / 36 * 16deg);
+}
+
+.panel:nth-child(18) {
+  --left: calc(var(--width) * -17);
+  --angle: calc(360 / 36 * 17deg);
+}
+
+.panel:nth-child(19) {
+  --left: calc(var(--width) * -18);
+  --angle: calc(360 / 36 * 18deg);
+}
+
+.panel:nth-child(20) {
+  --left: calc(var(--width) * -19);
+  --angle: calc(360 / 36 * 19deg);
+}
+
+.panel:nth-child(21) {
+  --left: calc(var(--width) * -20);
+  --angle: calc(360 / 36 * 20deg);
+}
+
+.panel:nth-child(22) {
+  --left: calc(var(--width) * -21);
+  --angle: calc(360 / 36 * 21deg);
+}
+
+.panel:nth-child(23) {
+  --left: calc(var(--width) * -22);
+  --angle: calc(360 / 36 * 22deg);
+}
+
+.panel:nth-child(24) {
+  --left: calc(var(--width) * -23);
+  --angle: calc(360 / 36 * 23deg);
+}
+
+.panel:nth-child(25) {
+  --left: calc(var(--width) * -24);
+  --angle: calc(360 / 36 * 24deg);
+}
+
+.panel:nth-child(26) {
+  --left: calc(var(--width) * -25);
+  --angle: calc(360 / 36 * 25deg);
+}
+
+.panel:nth-child(27) {
+  --left: calc(var(--width) * -26);
+  --angle: calc(360 / 36 * 26deg);
+}
+
+.panel:nth-child(28) {
+  --left: calc(var(--width) * -27);
+  --angle: calc(360 / 36 * 27deg);
+}
+
+.panel:nth-child(29) {
+  --left: calc(var(--width) * -28);
+  --angle: calc(360 / 36 * 28deg);
+}
+
+.panel:nth-child(30) {
+  --left: calc(var(--width) * -29);
+  --angle: calc(360 / 36 * 29deg);
+}
+
+.panel:nth-child(31) {
+  --left: calc(var(--width) * -30);
+  --angle: calc(360 / 36 * 30deg);
+}
+
+.panel:nth-child(32) {
+  --left: calc(var(--width) * -31);
+  --angle: calc(360 / 36 * 31deg);
+}
+
+.panel:nth-child(33) {
+  --left: calc(var(--width) * -32);
+  --angle: calc(360 / 36 * 32deg);
+}
+
+.panel:nth-child(34) {
+  --left: calc(var(--width) * -33);
+  --angle: calc(360 / 36 * 33deg);
+}
+
+.panel:nth-child(35) {
+  --left: calc(var(--width) * -34);
+  --angle: calc(360 / 36 * 34deg);
+}
+
+.panel:nth-child(36) {
+  --left: calc(var(--width) * -35);
+  --angle: calc(360 / 36 * 35deg);
+}
+
+.panel:after {
+  content: var(--content, "3D challange");
+  font-size: var(--font-size, 100px);
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  position: absolute;
+  left: var(--left);
+}
+
+.bg {
+  position: absolute;
+  width: calc(var(--radius) * 2.5);
+  height: calc(var(--font-size) * 4);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(13, 13, 13, 0.4)), color-stop(rgba(13, 13, 13, 0.8)), to(rgba(13, 13, 13, 0.4)));
+  background-image: linear-gradient(90deg, rgba(13, 13, 13, 0.4), rgba(13, 13, 13, 0.8), rgba(13, 13, 13, 0.4));
+}
+
+.author {
+  position: fixed;
+  bottom: 1em;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.2);
+}
+/*# sourceMappingURL=style.css.map */
