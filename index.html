@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-scroll="1">
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Document</title>
 		<link rel="stylesheet" href="style.css">
-		<script defer src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
+		<!-- <script defer src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
 		<script defer>
 			// Accepts any class name
 			var rellax = new Rellax('.rellax');
-		</script>
+		</script> -->
+
+		<script src="script.js" defer></script>
 	</head>
 
 	<body>
 		<nav class="nav">
 			<div class="nav__content">
-				<div class="logo">
+				<!-- <div class="logo">
 					<a class="logo__link" href="index.html" tabindex="1">
 						<img src="images/logo.png" alt="logo">
 					</a>
-				</div>
+				</div> -->
 				<ul class="menu">
 					<li class="menu__item">
-						<p>Home</p>
+						<a class="menu__item__link" href="index.html">
+							<p>Home</p>
+						</a>
 					</li>
 					<li class="menu__item">
-						<p>Work</p>
+						<a class="menu__item__link" href="about.html">
+							<p>Me</p>
+						</a>
 					</li>
 					<li class="menu__item">
-						<p>Home</p>
+						<a class="menu__item__link" href="work.html">
+							<p>Work</p>
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -78,10 +86,15 @@
 						<div class="panel"></div>
 					</div>
 				</div>
-	
+				
+				<div class="textbox">
+					<h2>Bruno Bastian - Producer<br>
+					Stockholm - Abelton Live</h2>
+				</div>
+
+				<a class="scroll" href="#work"><span></span></a>
 			</section>
-			<section class="work">
-				<h1 class="rellax" data-rellax-speed="-6">BOLLS</h1>
+			<section class="work" id="work">
 			</section>
 		</main>
 

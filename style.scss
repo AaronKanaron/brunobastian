@@ -20,20 +20,31 @@ $items: 36;
 	--spin-spin-time: 25s;
 	--letter-spacing: 1em;
 
+	--scrollpos: "ass";
+
 
 	//Navbar variables
 	--navbar-height: 6rem;
 	--navbar-width: 80%;
-	--navbar-background: hsla(0, 0%, 0%, 0.8);
 
-	--logo-size: 70%;
+	--logo-size: 80%;
 }
+
 
 html,body{
 	width: 100%; height: 100%;
 	margin: 0; padding: 0;
 
-	background: hsl(0, 0, 5%);
+  	background-color: hsl(0%, 0%, 5%);
+
+	scroll-behavior: smooth;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
 }
 
 body {
@@ -47,22 +58,47 @@ section{
 
 	&.header{
 		position: relative;
-		display: grid;
-		place-items: center;
-		&:after{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		overflow: hidden;
+		&:before{
 			content: "";
 			position: absolute;
 			height: 100%; width: 100%;
 			top: 0; left: 0;
 			
 			background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='960' height='540' preserveAspectRatio='none' viewBox='0 0 960 540'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1061%26quot%3b)' fill='none'%3e%3cpath d='M588.76-58.05C467.95-35.48 407.81 268.72 221.83 269.13 35.86 269.54-40.21 70.74-145.09 63.93' stroke='rgba(255%2c 255%2c 255%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M470.86-1.37C404.05 10.96 450.66 160.15 267.52 178.9 84.38 197.65-22.36 403.11-139.16 411.1' stroke='rgba(255%2c 255%2c 255%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M551.61-8.81C472.77 22.58 531.39 245.7 349.82 264.15 168.25 282.6 52.62 397.38-53.76 399.15' stroke='rgba(255%2c 255%2c 255%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M476-38.09C364.67 9.55 344.57 354.72 196.54 357.53 48.52 360.34 2.4 167.65-82.91 157.73' stroke='rgba(255%2c 255%2c 255%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M686.61-57.18C543.71-20.29 493.11 367.92 280.09 370.9 67.06 373.88-16.06 201.64-126.44 198.1' stroke='rgba(255%2c 255%2c 255%2c 1)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1061'%3e%3crect width='960' height='540' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
-			background-size: 75%;
+			background-size: 180vh;
 			background-repeat: no-repeat;
+		}
+
+		&:after{
+			content: "";
+			position: absolute;
+			height: 100%; width: 10rem;
+			top: 10%; right: 11%;
+			background-image: url(images/logo.png);
+			background-repeat: no-repeat;
+			background-size: contain;
+			opacity: calc(1 - (var(--scrollpos) / 100));
 		}
 	}
 
 	&.work{
 		background: white;
+		position: relative;
+
+		&:after{
+			content: "";
+			width: 100%; height: 100%;
+			top: -1px; left: 0;
+			position: absolute;
+			background-image: url(images/wave.svg);
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
 	}
 }
 
@@ -104,7 +140,7 @@ section{
 			}
 
 			&:after {
-				content: var(--content, '3D challange');
+				content: var(--content);
 				font-size: var(--font-size, 100px);
 				width: max-content;
 
@@ -112,6 +148,43 @@ section{
 				left: var(--left);
 			}
 		}
+	}
+}
+
+.scroll{
+	position: absolute;
+	bottom: 0;
+	padding: 1rem;
+	margin: 2rem;
+
+	transition: opacity ease-in .1s;
+	
+	span{
+		display: block;
+		width: 24px; height: 24px;
+
+		border-left: 1px solid #fff;
+		border-bottom: 1px solid #fff;
+
+		transform: rotate(-45deg);
+	}
+
+	&:hover{
+		opacity: 0.5;
+	}
+}
+
+.textbox{
+	position: absolute;
+	bottom: 10%;
+
+	
+	display: flex;
+	flex-direction: column;
+
+	h2{
+		font-size: 1.3rem;
+		color: hsl(0, 0, 15%);
 	}
 }
 
@@ -158,8 +231,12 @@ section{
 
 		&__item{
 			cursor: pointer;
-			text-decoration: none;
-			color: #fff;
+			
+
+			&__link{
+				text-decoration: none;
+				color: #fff;
+			}
 		}
 	}
 

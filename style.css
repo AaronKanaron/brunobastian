@@ -13,10 +13,10 @@
   --width: calc((2 * 3.141592 * var(--radius)) / 36 + 0.005em);
   --spin-spin-time: 25s;
   --letter-spacing: 1em;
+  --scrollpos: "ass";
   --navbar-height: 6rem;
   --navbar-width: 80%;
-  --navbar-background: hsla(0, 0%, 0%, 0.8);
-  --logo-size: 70%;
+  --logo-size: 80%;
 }
 
 html, body {
@@ -24,7 +24,14 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: #0d0d0d;
+  background-color: #0d0d0d;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -39,12 +46,19 @@ section {
 
 section.header {
   position: relative;
-  display: -ms-grid;
-  display: grid;
-  place-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
 }
 
-section.header:after {
+section.header:before {
   content: "";
   position: absolute;
   height: 100%;
@@ -52,12 +66,38 @@ section.header:after {
   top: 0;
   left: 0;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='960' height='540' preserveAspectRatio='none' viewBox='0 0 960 540'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1061%26quot%3b)' fill='none'%3e%3cpath d='M588.76-58.05C467.95-35.48 407.81 268.72 221.83 269.13 35.86 269.54-40.21 70.74-145.09 63.93' stroke='rgba(255%2c 255%2c 255%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M470.86-1.37C404.05 10.96 450.66 160.15 267.52 178.9 84.38 197.65-22.36 403.11-139.16 411.1' stroke='rgba(255%2c 255%2c 255%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M551.61-8.81C472.77 22.58 531.39 245.7 349.82 264.15 168.25 282.6 52.62 397.38-53.76 399.15' stroke='rgba(255%2c 255%2c 255%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M476-38.09C364.67 9.55 344.57 354.72 196.54 357.53 48.52 360.34 2.4 167.65-82.91 157.73' stroke='rgba(255%2c 255%2c 255%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M686.61-57.18C543.71-20.29 493.11 367.92 280.09 370.9 67.06 373.88-16.06 201.64-126.44 198.1' stroke='rgba(255%2c 255%2c 255%2c 1)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1061'%3e%3crect width='960' height='540' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
-  background-size: 75%;
+  background-size: 180vh;
   background-repeat: no-repeat;
+}
+
+section.header:after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 10rem;
+  top: 10%;
+  right: 11%;
+  background-image: url(images/logo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: calc(1 - (var(--scrollpos) / 100));
 }
 
 section.work {
   background: white;
+  position: relative;
+}
+
+section.work:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: -1px;
+  left: 0;
+  position: absolute;
+  background-image: url(images/wave.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .ring {
@@ -277,13 +317,53 @@ section.work {
 }
 
 .ring .box .panel:after {
-  content: var(--content, "3D challange");
+  content: var(--content);
   font-size: var(--font-size, 100px);
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   position: absolute;
   left: var(--left);
+}
+
+.scroll {
+  position: absolute;
+  bottom: 0;
+  padding: 1rem;
+  margin: 2rem;
+  -webkit-transition: opacity ease-in .1s;
+  transition: opacity ease-in .1s;
+}
+
+.scroll span {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.scroll:hover {
+  opacity: 0.5;
+}
+
+.textbox {
+  position: absolute;
+  bottom: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.textbox h2 {
+  font-size: 1.3rem;
+  color: #262626;
 }
 
 /*=------------=/
@@ -338,6 +418,9 @@ section.work {
 
 .nav .menu__item {
   cursor: pointer;
+}
+
+.nav .menu__item__link {
   text-decoration: none;
   color: #fff;
 }
