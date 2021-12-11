@@ -18,3 +18,18 @@ const storeScroll = () => {
 
 document.addEventListener('scroll', debounce(storeScroll), {passive: true});
 storeScroll();
+
+
+//Open song
+const songs = ["capri"]
+
+const openCard = (e) => {
+	if(songs.find(element => element === e.id)){
+		console.log("Found song in array: " + e.id)
+	}
+	if(e.classList.contains("open")){
+		e.classList.remove("open")
+	} else {
+		e.classList.add("open")
+	}
+};
