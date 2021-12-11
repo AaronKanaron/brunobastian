@@ -1,21 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300&display=swap");
+/*=----------=/
+|             |
+|  Variables  |
+|             |
+/=----------=*/
 :root {
+  --content: "Bruno Bastian - Producer -";
   --font-size: 58.6666666667px;
-  --content: "Aaron Clauss - Web Developer -";
-  --characters: 30;
-  --radius: 169px;
+  --radius: 206px;
   --glow-color: #09ff00;
   --width: calc((2 * 3.141592 * var(--radius)) / 36 + 0.005em);
-  --spin-spin-time: 15s;
+  --spin-spin-time: 25s;
+  --letter-spacing: 1em;
+  --navbar-height: 6rem;
+  --navbar-width: 80%;
+  --navbar-background: hsla(0, 0%, 0%, 0.8);
+  --logo-size: 70%;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #0d0d0d;
 }
 
 body {
-  background: #0d0d0d;
-  min-height: 100vh;
-  max-width: 100vw;
-  overflow: hidden;
+  overflow-x: hidden;
+  font-family: 'Readex Pro', sans-serif;
+}
+
+section {
+  scroll-snap-align: start;
+  height: 100vh;
+}
+
+section.header {
+  position: relative;
   display: -ms-grid;
   display: grid;
   place-items: center;
+}
+
+section.header:after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='960' height='540' preserveAspectRatio='none' viewBox='0 0 960 540'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1061%26quot%3b)' fill='none'%3e%3cpath d='M588.76-58.05C467.95-35.48 407.81 268.72 221.83 269.13 35.86 269.54-40.21 70.74-145.09 63.93' stroke='rgba(255%2c 255%2c 255%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M470.86-1.37C404.05 10.96 450.66 160.15 267.52 178.9 84.38 197.65-22.36 403.11-139.16 411.1' stroke='rgba(255%2c 255%2c 255%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M551.61-8.81C472.77 22.58 531.39 245.7 349.82 264.15 168.25 282.6 52.62 397.38-53.76 399.15' stroke='rgba(255%2c 255%2c 255%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M476-38.09C364.67 9.55 344.57 354.72 196.54 357.53 48.52 360.34 2.4 167.65-82.91 157.73' stroke='rgba(255%2c 255%2c 255%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M686.61-57.18C543.71-20.29 493.11 367.92 280.09 370.9 67.06 373.88-16.06 201.64-126.44 198.1' stroke='rgba(255%2c 255%2c 255%2c 1)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1061'%3e%3crect width='960' height='540' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  background-size: 75%;
+  background-repeat: no-repeat;
+}
+
+section.work {
+  background: white;
 }
 
 .ring {
@@ -24,10 +66,298 @@ body {
           transform-style: preserve-3d;
   -webkit-perspective: 500px;
           perspective: 500px;
-  -webkit-animation: perspective calc(var(--spin-spin-time, 32s) * 0.95) infinite linear alternate;
-          animation: perspective calc(var(--spin-spin-time, 32s) * 0.95) infinite linear alternate;
+  -webkit-animation: perspective calc(var(--spin-spin-time, 32s) * 0.95) infinite ease-in-out alternate;
+          animation: perspective calc(var(--spin-spin-time, 32s) * 0.95) infinite ease-in-out alternate;
 }
 
+.ring .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  -webkit-animation: rotate var(--spin-spin-time) infinite linear;
+          animation: rotate var(--spin-spin-time) infinite linear;
+}
+
+.ring .box .panel {
+  position: absolute;
+  width: var(--width, 100px);
+  height: calc(var(--font-size) * 1.1);
+  line-height: 1;
+  letter-spacing: var(--letter-spacing);
+  font-weight: 400;
+  overflow: hidden;
+  font-family: 'Playfair Display', serif;
+  -webkit-transform: translate(-50%, calc(-50% - .5px)) rotateY(var(--angle)) translateZ(var(--radius));
+          transform: translate(-50%, calc(-50% - .5px)) rotateY(var(--angle)) translateZ(var(--radius));
+}
+
+.ring .box .panel:nth-child(1) {
+  --left: calc(var(--width) * 0);
+  --angle: calc(360 / 36 * 0deg);
+}
+
+.ring .box .panel:nth-child(2) {
+  --left: calc(var(--width) * -1);
+  --angle: calc(360 / 36 * 1deg);
+}
+
+.ring .box .panel:nth-child(3) {
+  --left: calc(var(--width) * -2);
+  --angle: calc(360 / 36 * 2deg);
+}
+
+.ring .box .panel:nth-child(4) {
+  --left: calc(var(--width) * -3);
+  --angle: calc(360 / 36 * 3deg);
+}
+
+.ring .box .panel:nth-child(5) {
+  --left: calc(var(--width) * -4);
+  --angle: calc(360 / 36 * 4deg);
+}
+
+.ring .box .panel:nth-child(6) {
+  --left: calc(var(--width) * -5);
+  --angle: calc(360 / 36 * 5deg);
+}
+
+.ring .box .panel:nth-child(7) {
+  --left: calc(var(--width) * -6);
+  --angle: calc(360 / 36 * 6deg);
+}
+
+.ring .box .panel:nth-child(8) {
+  --left: calc(var(--width) * -7);
+  --angle: calc(360 / 36 * 7deg);
+}
+
+.ring .box .panel:nth-child(9) {
+  --left: calc(var(--width) * -8);
+  --angle: calc(360 / 36 * 8deg);
+}
+
+.ring .box .panel:nth-child(10) {
+  --left: calc(var(--width) * -9);
+  --angle: calc(360 / 36 * 9deg);
+}
+
+.ring .box .panel:nth-child(11) {
+  --left: calc(var(--width) * -10);
+  --angle: calc(360 / 36 * 10deg);
+}
+
+.ring .box .panel:nth-child(12) {
+  --left: calc(var(--width) * -11);
+  --angle: calc(360 / 36 * 11deg);
+}
+
+.ring .box .panel:nth-child(13) {
+  --left: calc(var(--width) * -12);
+  --angle: calc(360 / 36 * 12deg);
+}
+
+.ring .box .panel:nth-child(14) {
+  --left: calc(var(--width) * -13);
+  --angle: calc(360 / 36 * 13deg);
+}
+
+.ring .box .panel:nth-child(15) {
+  --left: calc(var(--width) * -14);
+  --angle: calc(360 / 36 * 14deg);
+}
+
+.ring .box .panel:nth-child(16) {
+  --left: calc(var(--width) * -15);
+  --angle: calc(360 / 36 * 15deg);
+}
+
+.ring .box .panel:nth-child(17) {
+  --left: calc(var(--width) * -16);
+  --angle: calc(360 / 36 * 16deg);
+}
+
+.ring .box .panel:nth-child(18) {
+  --left: calc(var(--width) * -17);
+  --angle: calc(360 / 36 * 17deg);
+}
+
+.ring .box .panel:nth-child(19) {
+  --left: calc(var(--width) * -18);
+  --angle: calc(360 / 36 * 18deg);
+}
+
+.ring .box .panel:nth-child(20) {
+  --left: calc(var(--width) * -19);
+  --angle: calc(360 / 36 * 19deg);
+}
+
+.ring .box .panel:nth-child(21) {
+  --left: calc(var(--width) * -20);
+  --angle: calc(360 / 36 * 20deg);
+}
+
+.ring .box .panel:nth-child(22) {
+  --left: calc(var(--width) * -21);
+  --angle: calc(360 / 36 * 21deg);
+}
+
+.ring .box .panel:nth-child(23) {
+  --left: calc(var(--width) * -22);
+  --angle: calc(360 / 36 * 22deg);
+}
+
+.ring .box .panel:nth-child(24) {
+  --left: calc(var(--width) * -23);
+  --angle: calc(360 / 36 * 23deg);
+}
+
+.ring .box .panel:nth-child(25) {
+  --left: calc(var(--width) * -24);
+  --angle: calc(360 / 36 * 24deg);
+}
+
+.ring .box .panel:nth-child(26) {
+  --left: calc(var(--width) * -25);
+  --angle: calc(360 / 36 * 25deg);
+}
+
+.ring .box .panel:nth-child(27) {
+  --left: calc(var(--width) * -26);
+  --angle: calc(360 / 36 * 26deg);
+}
+
+.ring .box .panel:nth-child(28) {
+  --left: calc(var(--width) * -27);
+  --angle: calc(360 / 36 * 27deg);
+}
+
+.ring .box .panel:nth-child(29) {
+  --left: calc(var(--width) * -28);
+  --angle: calc(360 / 36 * 28deg);
+}
+
+.ring .box .panel:nth-child(30) {
+  --left: calc(var(--width) * -29);
+  --angle: calc(360 / 36 * 29deg);
+}
+
+.ring .box .panel:nth-child(31) {
+  --left: calc(var(--width) * -30);
+  --angle: calc(360 / 36 * 30deg);
+}
+
+.ring .box .panel:nth-child(32) {
+  --left: calc(var(--width) * -31);
+  --angle: calc(360 / 36 * 31deg);
+}
+
+.ring .box .panel:nth-child(33) {
+  --left: calc(var(--width) * -32);
+  --angle: calc(360 / 36 * 32deg);
+}
+
+.ring .box .panel:nth-child(34) {
+  --left: calc(var(--width) * -33);
+  --angle: calc(360 / 36 * 33deg);
+}
+
+.ring .box .panel:nth-child(35) {
+  --left: calc(var(--width) * -34);
+  --angle: calc(360 / 36 * 34deg);
+}
+
+.ring .box .panel:nth-child(36) {
+  --left: calc(var(--width) * -35);
+  --angle: calc(360 / 36 * 35deg);
+}
+
+.ring .box .panel:after {
+  content: var(--content, "3D challange");
+  font-size: var(--font-size, 100px);
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  position: absolute;
+  left: var(--left);
+}
+
+/*=------------=/
+|			    |
+|     Navbar    |
+|				|
+/=------------=*/
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--navbar-height);
+  z-index: 1;
+  mix-blend-mode: difference;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.nav__content {
+  width: var(--navbar-width);
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav .menu {
+  height: 100%;
+  margin-left: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+  margin: 0 0 0 auto;
+  padding: 0;
+  gap: 3rem;
+}
+
+.nav .menu__item {
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav .logo {
+  height: var(--logo-size);
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+}
+
+.nav .logo img {
+  height: 100%;
+}
+
+/*=-----------=/
+|			   |
+|   Keyframes  |
+|			   |
+/=-----------=*/
 @-webkit-keyframes perspective {
   0% {
     -webkit-perspective-origin: 50% calc(50% + var(--radius) * 0.7);
@@ -42,7 +372,6 @@ body {
             transform: rotate(15deg);
   }
 }
-
 @keyframes perspective {
   0% {
     -webkit-perspective-origin: 50% calc(50% + var(--radius) * 0.7);
@@ -56,20 +385,6 @@ body {
     -webkit-transform: rotate(15deg);
             transform: rotate(15deg);
   }
-}
-
-.box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: white;
-  text-shadow: 0 0 5px #fff, 0 0 4px #fff, 0 0 8px var(--glow-color);
-  -webkit-animation: rotate var(--spin-spin-time) infinite linear;
-          animation: rotate var(--spin-spin-time) infinite linear;
 }
 
 @-webkit-keyframes rotate {
@@ -92,224 +407,5 @@ body {
     -webkit-transform: rotateY(-360deg);
             transform: rotateY(-360deg);
   }
-}
-
-.panel {
-  position: absolute;
-  width: var(--width, 100px);
-  height: calc(var(--font-size) * 1.1);
-  line-height: 1;
-  overflow: hidden;
-  -webkit-transform: translate(-50%, -50%) rotateY(var(--angle)) translateZ(var(--radius));
-          transform: translate(-50%, -50%) rotateY(var(--angle)) translateZ(var(--radius));
-}
-
-.panel:nth-child(1) {
-  --left: calc(var(--width) * 0);
-  --angle: calc(360 / 36 * 0deg);
-}
-
-.panel:nth-child(2) {
-  --left: calc(var(--width) * -1);
-  --angle: calc(360 / 36 * 1deg);
-}
-
-.panel:nth-child(3) {
-  --left: calc(var(--width) * -2);
-  --angle: calc(360 / 36 * 2deg);
-}
-
-.panel:nth-child(4) {
-  --left: calc(var(--width) * -3);
-  --angle: calc(360 / 36 * 3deg);
-}
-
-.panel:nth-child(5) {
-  --left: calc(var(--width) * -4);
-  --angle: calc(360 / 36 * 4deg);
-}
-
-.panel:nth-child(6) {
-  --left: calc(var(--width) * -5);
-  --angle: calc(360 / 36 * 5deg);
-}
-
-.panel:nth-child(7) {
-  --left: calc(var(--width) * -6);
-  --angle: calc(360 / 36 * 6deg);
-}
-
-.panel:nth-child(8) {
-  --left: calc(var(--width) * -7);
-  --angle: calc(360 / 36 * 7deg);
-}
-
-.panel:nth-child(9) {
-  --left: calc(var(--width) * -8);
-  --angle: calc(360 / 36 * 8deg);
-}
-
-.panel:nth-child(10) {
-  --left: calc(var(--width) * -9);
-  --angle: calc(360 / 36 * 9deg);
-}
-
-.panel:nth-child(11) {
-  --left: calc(var(--width) * -10);
-  --angle: calc(360 / 36 * 10deg);
-}
-
-.panel:nth-child(12) {
-  --left: calc(var(--width) * -11);
-  --angle: calc(360 / 36 * 11deg);
-}
-
-.panel:nth-child(13) {
-  --left: calc(var(--width) * -12);
-  --angle: calc(360 / 36 * 12deg);
-}
-
-.panel:nth-child(14) {
-  --left: calc(var(--width) * -13);
-  --angle: calc(360 / 36 * 13deg);
-}
-
-.panel:nth-child(15) {
-  --left: calc(var(--width) * -14);
-  --angle: calc(360 / 36 * 14deg);
-}
-
-.panel:nth-child(16) {
-  --left: calc(var(--width) * -15);
-  --angle: calc(360 / 36 * 15deg);
-}
-
-.panel:nth-child(17) {
-  --left: calc(var(--width) * -16);
-  --angle: calc(360 / 36 * 16deg);
-}
-
-.panel:nth-child(18) {
-  --left: calc(var(--width) * -17);
-  --angle: calc(360 / 36 * 17deg);
-}
-
-.panel:nth-child(19) {
-  --left: calc(var(--width) * -18);
-  --angle: calc(360 / 36 * 18deg);
-}
-
-.panel:nth-child(20) {
-  --left: calc(var(--width) * -19);
-  --angle: calc(360 / 36 * 19deg);
-}
-
-.panel:nth-child(21) {
-  --left: calc(var(--width) * -20);
-  --angle: calc(360 / 36 * 20deg);
-}
-
-.panel:nth-child(22) {
-  --left: calc(var(--width) * -21);
-  --angle: calc(360 / 36 * 21deg);
-}
-
-.panel:nth-child(23) {
-  --left: calc(var(--width) * -22);
-  --angle: calc(360 / 36 * 22deg);
-}
-
-.panel:nth-child(24) {
-  --left: calc(var(--width) * -23);
-  --angle: calc(360 / 36 * 23deg);
-}
-
-.panel:nth-child(25) {
-  --left: calc(var(--width) * -24);
-  --angle: calc(360 / 36 * 24deg);
-}
-
-.panel:nth-child(26) {
-  --left: calc(var(--width) * -25);
-  --angle: calc(360 / 36 * 25deg);
-}
-
-.panel:nth-child(27) {
-  --left: calc(var(--width) * -26);
-  --angle: calc(360 / 36 * 26deg);
-}
-
-.panel:nth-child(28) {
-  --left: calc(var(--width) * -27);
-  --angle: calc(360 / 36 * 27deg);
-}
-
-.panel:nth-child(29) {
-  --left: calc(var(--width) * -28);
-  --angle: calc(360 / 36 * 28deg);
-}
-
-.panel:nth-child(30) {
-  --left: calc(var(--width) * -29);
-  --angle: calc(360 / 36 * 29deg);
-}
-
-.panel:nth-child(31) {
-  --left: calc(var(--width) * -30);
-  --angle: calc(360 / 36 * 30deg);
-}
-
-.panel:nth-child(32) {
-  --left: calc(var(--width) * -31);
-  --angle: calc(360 / 36 * 31deg);
-}
-
-.panel:nth-child(33) {
-  --left: calc(var(--width) * -32);
-  --angle: calc(360 / 36 * 32deg);
-}
-
-.panel:nth-child(34) {
-  --left: calc(var(--width) * -33);
-  --angle: calc(360 / 36 * 33deg);
-}
-
-.panel:nth-child(35) {
-  --left: calc(var(--width) * -34);
-  --angle: calc(360 / 36 * 34deg);
-}
-
-.panel:nth-child(36) {
-  --left: calc(var(--width) * -35);
-  --angle: calc(360 / 36 * 35deg);
-}
-
-.panel:after {
-  content: var(--content, "3D challange");
-  font-size: var(--font-size, 100px);
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  position: absolute;
-  left: var(--left);
-}
-
-.bg {
-  position: absolute;
-  width: calc(var(--radius) * 2.5);
-  height: calc(var(--font-size) * 4);
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(13, 13, 13, 0.4)), color-stop(rgba(13, 13, 13, 0.8)), to(rgba(13, 13, 13, 0.4)));
-  background-image: linear-gradient(90deg, rgba(13, 13, 13, 0.4), rgba(13, 13, 13, 0.8), rgba(13, 13, 13, 0.4));
-}
-
-.author {
-  position: fixed;
-  bottom: 1em;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  color: rgba(255, 255, 255, 0.2);
 }
 /*# sourceMappingURL=style.css.map */
