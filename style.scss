@@ -237,7 +237,12 @@ background-size: 180vh;
 
 	transition: opacity ease-in .1s;
 	
-	opacity: calc(1 - calc(var(--scrollpos) / 180));
+	&[href="#track"]{
+		opacity: calc(1 - (var(--scrollpos) / 180));
+	}
+	&[href="#work"]{
+		opacity: calc(1 - ((var(--scrollpos) - 950) / 180));
+	}
 
 	span{
 		display: block;

@@ -434,7 +434,14 @@ section.work:before {
   margin: 2rem;
   -webkit-transition: opacity ease-in .1s;
   transition: opacity ease-in .1s;
-  opacity: calc(1 - calc(var(--scrollpos) / 180));
+}
+
+.scroll[href="#track"] {
+  opacity: calc(1 - (var(--scrollpos) / 180));
+}
+
+.scroll[href="#work"] {
+  opacity: calc(1 - ((var(--scrollpos) - 950) / 180));
 }
 
 .scroll span {
