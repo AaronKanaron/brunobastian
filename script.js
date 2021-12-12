@@ -115,3 +115,14 @@ document.querySelectorAll("[data-hover]").forEach(function(el){
 		document.querySelector(".ball").style.padding = "12.5px";
 	});
 });
+
+
+
+
+
+window.onload = () => {
+	setTimeout(() => {
+		document.querySelector(".loader-wrapper").style.opacity = "0";
+
+	}, 1000);
+}
