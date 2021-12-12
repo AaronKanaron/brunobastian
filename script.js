@@ -47,8 +47,6 @@ function toggleOpen(element) {
 
 
 
-var tracks = [{ name: "Lush", poster: "https://i1.sndcdn.com/artworks-TqYzSjzHcVc8Axo7-4M5N0g-t500x500.jpg", year: "2020" }, { name: "Capri", poster: "https://i1.sndcdn.com/artworks-gnuzneGK2rqYxZwM-bG5fqw-t500x500.jpg", year: "2021" }];
-
 const slides = document.querySelectorAll(".slide");
 const dots = document.querySelectorAll(".dot");
 
@@ -115,6 +113,5 @@ document.querySelectorAll("[data-hover]").forEach(function(el){
 	});
 	el.addEventListener("mouseleave", function(){
 		document.querySelector(".ball").style.padding = "12.5px";
-
 	});
 });
