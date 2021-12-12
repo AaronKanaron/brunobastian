@@ -16,11 +16,11 @@ const storeScroll = () => {
 
 };
 
-document.addEventListener('scroll', debounce(storeScroll), {passive: true});
+document.addEventListener('scroll', debounce(storeScroll), { passive: true });
 storeScroll();
 
 
-//Open song
+//Open song this is broken
 const songs = ["capri"]
 
 const openCard = (e) => {
@@ -33,3 +33,88 @@ const openCard = (e) => {
 		e.classList.add("open")
 	}
 };
+
+
+//Toggle an element specified by the id, if it is open, close it, if it is closed, open it
+function toggleOpen(element) {
+	el = document.getElementById(element);
+	if(el.classList.contains("open")){
+		el.classList.remove("open")
+	} else {
+		el.classList.add("open")
+	}
+}
+
+
+
+var tracks = [{ name: "Lush", poster: "https://i1.sndcdn.com/artworks-TqYzSjzHcVc8Axo7-4M5N0g-t500x500.jpg", year: "2020" }, { name: "Capri", poster: "https://i1.sndcdn.com/artworks-gnuzneGK2rqYxZwM-bG5fqw-t500x500.jpg", year: "2021" }];
+
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+
+function setActive(i){
+	for(slide of slides){
+		slide.classList.remove("active");
+		slides[i].classList.add("active");
+	}
+	for(dot of dots){
+		dot.classList.remove("active");
+		dots[i].classList.add("active");
+	}
+}
+
+for(let i = 0; i < dots.length; i++){
+	dots[i].addEventListener("click", function(){
+		setActive(i);
+	});
+}
+
+
+
+
+
+var mouseX = window.innerWidth / 2,
+	mouseY = window.innerHeight / 2;
+
+var ball = {
+	el: document.querySelector(".ball"),
+	x: window.innerWidth / 2,
+	y: window.innerHeight / 2,
+	w: 50,
+	h: 50,
+	update:function(){
+		l = this.x-this.w/2
+		t = this.y-this.h/2
+		this.el.style.transform = "translate3d("+l+"px,"+t+"px,0)"
+	}
+}
+
+document.addEventListener("mousemove", function(e){
+	//Get mouse positions
+	mouseX = e.pageX;
+	mouseY = e.pageY;
+	move();
+});
+
+setInterval(move,1000/60);
+function move(){
+	ball.x = lerp(ball.x, mouseX, 0.1);
+	ball.y = lerp(ball.y, mouseY, 0.1);
+	ball.update();
+}
+
+function lerp(start, end, amt){
+	return (1-amt)*start+amt*end;
+}
+
+
+document.querySelectorAll("[data-hover]").forEach(function(el){
+	el.addEventListener("mouseenter", function(){
+		document.querySelector(".ball").style.padding = "0px";
+
+	});
+	el.addEventListener("mouseleave", function(){
+		document.querySelector(".ball").style.padding = "12.5px";
+
+	});
+});
