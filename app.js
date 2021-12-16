@@ -143,8 +143,14 @@ const lerp = (start, end, amt) => {
 document.querySelectorAll("[data-hover]").forEach((el) => {
 	el.addEventListener("mouseenter", function () {
 		document.querySelector(".ball").style.padding = "0px";
+		document.querySelector(".ball").style.left = "12.5px";
+		document.querySelector(".ball").style.top = "12.5px";
+
+
 	});
 	el.addEventListener("mouseleave", function () {
 		document.querySelector(".ball").style.padding = "12.5px";
+		document.querySelector(".ball").style.left = "0px";
+		document.querySelector(".ball").style.top = "0";
 	});
 });

@@ -94,7 +94,8 @@ const showSlides = (n) => {
 }
 
 const goTrack = (trackNumber) => {
-	showSlides(slideIndex = trackNumber)
+	if(trackNumber == slideIndex) { return; }
+	showSlides(slideIndex = trackNumber);
 }
 
 const turnTrack = (direction) => {

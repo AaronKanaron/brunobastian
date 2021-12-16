@@ -66,12 +66,11 @@ section:before {
   top: 0;
   left: 0;
   pointer-events: none;
-  cursor: none;
   z-index: 10;
   -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
-  -webkit-transition: padding .3s ease-in-out;
-  transition: padding .3s ease-in-out;
+  -webkit-transition: padding .3s ease-in-out, left .3s ease-in-out, top .3s ease-in-out;
+  transition: padding .3s ease-in-out, left .3s ease-in-out, top .3s ease-in-out;
 }
 
 .ball:after {
@@ -140,9 +139,14 @@ section:before {
           transform: translateX(-100%) !important;
 }
 
+.slide-in.from-top {
+  -webkit-transform: translateY(-100%) !important;
+          transform: translateY(-100%) !important;
+}
+
 .slide-in.observing {
-  -webkit-transform: translateX(0%) !important;
-          transform: translateX(0%) !important;
+  -webkit-transform: transform(0%) !important;
+          transform: transform(0%) !important;
 }
 
 .slide-in.observing > * {

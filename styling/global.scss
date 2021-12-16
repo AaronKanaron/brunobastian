@@ -79,12 +79,11 @@ section{
 	left: 0;
 
 	pointer-events: none;
-	cursor: none;
 	z-index: 10;
 
 	transform-origin: 50% 50%;
 
-	transition: padding .3s ease-in-out;
+	transition: padding .3s ease-in-out, left .3s ease-in-out, top .3s ease-in-out;
 
 	&:after {
 		content: '';
@@ -145,9 +144,12 @@ section{
 	&.from-left {
 		transform: translateX(-100%) !important;
 	}
+	&.from-top{
+		transform: translateY(-100%) !important;
+	}
 
 	&.observing {
-		transform: translateX(0%) !important;
+		transform: transform(0%) !important;
 
 		& > *{
 			opacity: 1;
