@@ -26,10 +26,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<!-- Style -->
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="styling/style.css">
+		<link rel="stylesheet" href="styling/global.css">
+
 		
 		<!-- Script -->
-		<script src="script.js" defer></script>
+		<script src="index.js" defer></script>
+		<script src="app.js" defer></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/0.0.2/barba.min.js" integrity="sha512-j0ThLeHF8KI1DZjV/vAJ0CKkDAMAsZbFA1KarA2jIfzAmXn3di3krSq9LJrv/gBVsUnouKqS/agIoQpxj/3Hkg==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+		<script src="barba.js" defer></script> -->
 
 		<!-- Favicon -->
 		<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
@@ -42,7 +47,7 @@
 		<nav class="nav">
 			<div class="nav__content">
 				<div class="logo">
-					<a class="logo__link" href="index.html" tabindex="1">
+					<a class="logo__link" href="index.html">
 						<!-- <img src="images/logo.png" alt="logo"> -->
 						<p>Bruno Bastian</p>
 					</a>
@@ -50,17 +55,17 @@
 				
 				<ul class="menu">
 					<li class="menu__item">
-						<a class="menu__item__link" href="index.html">
+						<a class="menu__item__link" data-hover href="index.html">
 							<p>Home</p>
 						</a>
 					</li>
 					<li class="menu__item">
-						<a class="menu__item__link" href="about.html">
+						<a class="menu__item__link" data-hover href="about.html">
 							<p>Me</p>
 						</a>
 					</li>
 					<li class="menu__item">
-						<a class="menu__item__link" href="work.html">
+						<a class="menu__item__link" data-hover href="work.html">
 							<p>Work</p>
 						</a>
 					</li>
@@ -97,6 +102,8 @@
 
 		<main>
 			<section class="header">
+				<img class="header-logo fade-out" src="images/logo.png" alt="logo" draggable="false">
+
 				<div class="ring">
 					<div class="box">
 						<div class="panel"></div>
@@ -137,60 +144,58 @@
 						<div class="panel"></div>
 					</div>
 				</div>
-				
-				<img class="header-logo" src="images/logo.png" alt="logo" draggable="false">
 
 				<div class="textbox">
 					<h2>Bruno Bastian - Producer<br>
-					Stockholm - Abelton Live</h2>
+						Stockholm - Abelton Live</h2>
 				</div>
 
-				<a class="scroll" data-hover href="#track"><span></span></a>
+				<a class="scroll fade-out" data-hover href="#track" aria-label="Scroll Down"><span></span></a>
 			</section>
-			<section class="track" id="track"> 
-				<!-- Sliders -->
-				<div class="slide active">
-					<div class="poster">
-						<img src="https://i1.sndcdn.com/artworks-TqYzSjzHcVc8Axo7-4M5N0g-t500x500.jpg" alt="">
+
+			<section class="track" id="track">
+				<div class="slides fade-in">
+					<!-- <div class="slide fade-in-toggle">
+						<div class="poster">
+							<img src="posters/capri.jpg" alt="Capri" draggable="false">
+						</div>
+						<div class="info">
+							<h2>Capri</h2>
+							<p>2021</p>
+							<button data-hover>Listen</button>
+						</div>
 					</div>
-					<div class="info">
-						<h2>Lush</h2>
-						<p> 2020</p>
-						<button data-hover>Listen</button>
+					<div class="slide fade-in-toggle">
+						<div class="poster">
+							<img src="posters/gelato.jpg" alt="Capri" draggable="false">
+						</div>
+						<div class="info">
+							<h2>Gelato</h2>
+							<p>2020</p>
+							<button data-hover>Listen</button>
+						</div>
 					</div>
+					<div class="slide fade-in-toggle">
+						<div class="poster">
+							<img src="posters/lush.webp" alt="Capri" draggable="false">
+						</div>
+						<div class="info">
+							<h2>Lush</h2>
+							<p>2020</p>
+							<button data-hover>Listen</button>
+						</div>
+					</div> -->
 				</div>
-				<div class="slide">
-					<div class="poster">
-						<img src="https://i1.sndcdn.com/artworks-gnuzneGK2rqYxZwM-bG5fqw-t500x500.jpg" alt="">
-					</div>
-					<div class="info">
-						<h2>Capri</h2>
-						<p>2021</p>
-						<button data-hover>Listen</button>
-					</div>
-				</div>
-				<div class="slide">
-					<div class="poster">
-						<img src="https://i1.sndcdn.com/artworks-z6S2H2zF1dua0LHK-4ziUPQ-t500x500.jpg" alt="">
-					</div>
-					<div class="info">
-						<h2>Gelato</h2>
-						<p>2020</p>
-						<button data-hover>Listen</button>
-					</div>
+
+				<div class="arrows">
+					<span class="material-icons-round arrow" data-hover onclick="turnTrack(-1)">arrow_back_ios</span>
+					<span class="material-icons-round arrow" data-hover onclick="turnTrack(1)">arrow_forward_ios</span>
 				</div>
 				
-
-				<a class="scroll" href="#work" data-hover><span></span></a>
-
 				<div class="dots" id="dots">
-					<p class="dot active" data-hover><span></span></p>
-					<p class="dot" data-hover><span></span></p>
-					<p class="dot" data-hover><span></span></p>
 				</div>
-
 			</section>
-			<section class="work" id="work">
+			<!-- <section class="work" id="work">
 				<div class="work-grid">
 					<div class="work-grid__item right" id="capri" onclick="openCard(this)">
 						<div class="work-grid__item__content">
@@ -208,7 +213,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="work-grid__item middle-bottom"onclick="openCard(this)">
+					<div class="work-grid__item middle-bottom" onclick="openCard(this)">
 						<div class="work-grid__item__content">
 							<div class="work-grid__item__content__text">
 								<h3>Velvet</h3>
@@ -216,7 +221,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="work-grid__item left-top"onclick="openCard(this)">
+					<div class="work-grid__item left-top" onclick="openCard(this)">
 						<div class="work-grid__item__content">
 							<div class="work-grid__item__content__text">
 								<h3>Lush</h3>
@@ -224,7 +229,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="work-grid__item left-bottom"onclick="openCard(this)">
+					<div class="work-grid__item left-bottom" onclick="openCard(this)">
 						<div class="work-grid__item__content">
 							<div class="work-grid__item__content__text">
 								<h3>Apollo</h3>
@@ -233,8 +238,9 @@
 						</div>
 					</div>
 				</div>
-			</section>
+			</section> -->
 		</main>
+		
 		<div class="ball" id="ball"></div>
 
 		<div class="loader-wrapper">

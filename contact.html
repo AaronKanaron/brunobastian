@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<!-- Primary Meta Tags -->
+		<title>Bruno Bastian - Home</title>
+		<meta name="title" content="Bruno Bastian - Home">
+		<meta name="description"
+			content="Swedish Producer Bruno Bastian // Funk, Disco and Soul with Electronic House elements. Ableton Live 10 user.">
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://aaronkanaron.github.io/portfolio/">
+		<meta property="og:title" content="Bruno Bastian - Home">
+		<meta property="og:description"
+			content="Swedish Producer Bruno Bastian // Funk, Disco and Soul with Electronic House elements. Ableton Live 10 user.">
+		<meta property="og:image" content="https://i.imgur.com/MfosM6a.png">
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image">
+		<meta property="twitter:url" content="https://aaronkanaron.github.io/portfolio/">
+		<meta property="twitter:title" content="Bruno Bastian - Home">
+		<meta property="twitter:description"
+			content="Swedish Producer Bruno Bastian // Funk, Disco and Soul with Electronic House elements. Ableton Live 10 user.">
+		<meta property="twitter:image" content="https://i.imgur.com/MfosM6a.png">
+
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Style -->
+		<link rel="stylesheet" href="styling/global.css">
+		<link rel="stylesheet" href="styling/style.css">
+
+		<!-- Script -->
+		<script src="global.js" defer></script>
+
+		<!-- Favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="64x64" href="favicon/favicon-64x64.png">
+	</head>
+
+	<body page="contact">
+		<nav class="nav">
+			<div class="nav__content">
+				<div class="logo">
+					<a class="logo__link" href="index.html">
+						<!-- <img src="images/logo.png" alt="logo"> -->
+						<p>Bruno Bastian</p>
+					</a>
+				</div>
+				
+				<ul class="menu">
+					<li class="menu__item">
+						<a class="menu__item__link" href="index.html">
+							<p>Home</p>
+						</a>
+					</li>
+					<li class="menu__item">
+						<a class="menu__item__link" href="about.html">
+							<p>Me</p>
+						</a>
+					</li>
+					<li class="menu__item">
+						<a class="menu__item__link" href="work.html">
+							<p>Work</p>
+						</a>
+					</li>
+					
+					
+				</ul>
+				
+				<p class="open-menu" onclick="toggleOpen('menu')">
+					<span class="material-icons-round">menu</span>
+				</p>
+
+				
+			</div>
+		</nav>
+		<div class="mobile-nav" id="menu">
+			<ul class="mobile-menu">
+				<li class="mobile-menu__item">
+					<a class="mobile-menu__item__link" href="index.html">
+						<p>Home</p>
+					</a>
+				</li>
+				<li class="mobile-menu__item">
+					<a class="mobile-menu__item__link" href="index.html">
+						<p>Me</p>
+					</a>
+				</li>
+				<li class="mobile-menu__item">
+					<a class="mobile-menu__item__link" href="index.html">
+						<p>Work</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<main>
+			<div class="contact">
+				<div class="contact__content">
+					<h1 class="contact__title">Contact</h1>
+					<p class="contact__text">
+						If you have any questions, feel free to contact me.
+					</p>
+					<form class="contact__form">
+						<div class="contact__form__input">
+							<label for="name">Name</label>
+							<input type="text" id="name" name="name" placeholder="Your name">
+						</div>
+						<div class="contact__form__input">
+							<label for="email">Email</label>
+							<input type="email" id="email" name="email" placeholder="Your email">
+						</div>
+						<div class="contact__form__input-big">
+							<label for="message">Message</label>
+							<textarea id="message" name="message" placeholder="Your message"></textarea>
+						</div>
+						<div class="contact__form__input">
+							<button type="submit">Send</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</main>
+
+		<div class="ball" id="ball"></div>
+
+	</body>
+</html>
